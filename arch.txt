@@ -1,0 +1,85 @@
+Scheme (language name subject to change)
+
+- Billed as a scheme interpreter because of syntax and semantics
+
+Goals:
+  - No process-global or thread-global state
+  - Curried by default
+  - Algebraic datatypes
+  - Gradually typed
+  - Bounded polymorphism (i.e. interfaces)
+  - Namespaces
+  - C FFI
+
+Architecture:
+  - Basic runtime
+    - function call semantics
+    - primitive types
+    - data layout
+    - stack
+    - allocator
+    - primitive function interface
+    - basic types
+  - ByteCode interpreter
+    - implement primitives
+  - Advanced runtime
+    - garbage collector
+      - initial
+        - basic mark&sweep GC
+      - goal
+        - generational GC with gen0 bump allocator
+        - allocate small objs in nursery (cheap)
+        - allocate big and long-lived objects on C heap
+        - track object mutation
+  - Lexer & Parser
+    - basic language forms
+      - let
+        (let ((binders1 expr1) (binders2 expr2)) (expr3))
+      - case
+        (case expr ((binders1 fn1) (binders2 fn2) (binders3 fn3)))
+      - application
+        (fn args...)
+    - type syntax
+      (expr : type)
+    - higher-level forms
+      - namespaces
+      - define
+        (define (name : type) val)
+      - defun
+        (defun (name : return_type)
+          "doc-string"
+          ((arg1 : type1) (arg2: type2)) (expr))
+      - defclass
+        (defclass (name : (constraints))
+          "doc-string"
+          ((method1 : type1))
+          ((method2 : type2)))
+  - Language Features
+    - classes/interfaces
+    - modules
+    - optional AOT typechecking
+    - proper C FFI
+
+User Stories:
+
+  - I want a language that is extremely easy to embed in another program.
+  - I want a language that can execute without process-level or
+    thread-level global variables.
+  - I want a language that doesn't force me to worry about global collisions
+    between interpreter instances.
+  - I want a language with minimalist syntax and semantics.
+  - I want a language that allows me to quickly prototype code while
+    still allowing me to make static guarantees about specific portions of
+    code as my project evolves.
+  - I want a language that favors customizing function behavior via 
+    function composition rather than adding a million flags to every
+    arbitrary function (see CommonLisp).
+  - I want a safe language that can allow a program to fail without crashing
+    the runtime in which it executes.
+  - I want a language that supports ADTs.
+  - I want to be able to write tail-recursive functions and ensure that
+    tail-calls are eliminated.
+  - I want to be able to write mutually-tail-recursive functions and ensure
+    that tail-calls are eliminated.
+  - I want to be able to write code that uses explicit continuation passing
+    and ensure that tail-calls are eliminated.

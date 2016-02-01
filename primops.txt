@@ -1,0 +1,227 @@
+/* --------
+ * Prim-Ops
+ * --------
+ *
+ * SchemeByte
+ *
+ *  + imm
+ *
+ *  + neg
+ *  + add
+ *  + sub
+ *  + mul
+ *  + div
+ *  + rem
+ *
+ *  + eq
+ *  + ne
+ *
+ *  + le
+ *  + lt
+ *  + ge
+ *  + gt
+ *
+ *  + and
+ *  + or
+ *  + xor
+ *  + not
+ *  + shl
+ *  + shr
+ *
+ *  + byteToChar
+ *  + byteToNat
+ *  + byteToInt
+ *  + byteToDouble
+ *
+ * SchemeNat
+ *
+ *  + imm
+ *
+ *  + neg
+ *  + add
+ *  + sub
+ *  + mul
+ *  + div
+ *  + rem
+ *
+ *  + eq
+ *  + ne
+ *
+ *  + le
+ *  + lt
+ *  + ge
+ *  + gt
+ *
+ *  + and
+ *  + or
+ *  + xor
+ *  + not
+ *  + shl
+ *  + shr
+ *
+ *  + natToByte
+ *  + natToInt
+ *  + natToDouble
+ *  + natToChar
+ *
+ * SchemeInt
+ *
+ *  + imm
+ *
+ *  + neg
+ *  + add
+ *  + sub
+ *  + mul
+ *  + div
+ *  + rem
+ *
+ *  + eq
+ *  + ne
+ *
+ *  + le
+ *  + lt
+ *  + ge
+ *  + gt
+ *
+ *  + intToNat
+ *  + intToDouble
+ *
+ *  SchemeDouble
+ *
+ *  + imm
+ *
+ *  + exp
+ *  + log
+ *  + sqrt
+ *  + power
+ *
+ *  + sin
+ *  + cos
+ *  + tan
+ *
+ *  + arcsin
+ *  + arccos
+ *  + arctan
+ *
+ *  + sinh
+ *  + cosh
+ *  + tanh
+ *
+ *  + neg
+ *  + add
+ *  + sub
+ *  + mul
+ *  + div
+ *  + rem
+ *
+ *  + eq
+ *  + ne
+ *
+ *  + le
+ *  + lt
+ *  + ge
+ *  + gt
+ *
+ *  + doubleToByte
+ *  + doubleToNat
+ *  + doubleToInt
+ *
+ * SchemeChar
+ *
+ *  + imm
+ *
+ *  + eq
+ *  + ne
+ *
+ *  + le
+ *  + lt
+ *  + ge
+ *  + gt
+ *
+ *  + charToNat
+ *
+ * SchemeVar
+ *
+ *  + new
+ *  + eq
+ *
+ *  + set
+ *  + get
+ *
+ * SchemeArr
+ *
+ *  + new
+ *  + clone
+ *
+ *  + size
+ *  + eq
+ *  + ne
+ *
+ *  + get
+ *  + set
+ *
+ * SchemeByteArr
+ *
+ *  + new
+ *  + newFixed
+ *
+ *  + copy
+ *  + clone
+ *
+ *  + getAddr
+ *  + size
+ *  + eq
+ *  + ne
+ *
+ *  + readByte
+ *  + readChar
+ *  + readWord
+ *  + readInt
+ *
+ *  + writeByte
+ *  + writeChar
+ *  + writeWord
+ *  + writeInt
+ *
+ * SchemePtr
+ *
+ *  + imm
+ *  + nullptr
+ *
+ *  + eq
+ *  + ne
+ *
+ *  + gt
+ *  + ge
+ *  + lt
+ *  + le
+ *
+ *  + readByte
+ *  + readChar
+ *  + readInt
+ *  + readWord
+ *  + readDouble
+ *  + readPtr
+ *  + readFn
+ *
+ *  + add
+ *  + sub
+ *
+ * ----------
+ * Evaluation
+ * ----------
+ *
+ *  + eval (exact call)
+ *  + apply (exact apply)
+ *  + applyAP (over-sat call)
+ *  + applyPAP (unsat call)
+ *  + applyGen (generic call)
+ *  + retFun (call scrutinee with next stack continuation)
+ *
+ *  + set (reassign a variable with top of stack)
+ *  + getfield (fetch field n from obj at top of stack)
+ *
+ *  + exit
+ *
+ *
+ */
