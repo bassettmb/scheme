@@ -15,5 +15,6 @@ Resources:
   + [Scheme R5RS Standard \[pdf\]](http://www.schemers.org/Documents/Standards/R5RS/r5rs.pdf)
   + [Making a fast curry \[pdf\]](http://community.haskell.org/~simonmar/papers/evalapplyjfp06.pdf)
   + [The Metacircular Evaluator](https://mitpress.mit.edu/sicp/full-text/sicp/book/node76.html)
+  + [Oleg Kiselyov on Scheme Macros](http://okmij.org/ftp/Scheme/macros.html)
 
   
