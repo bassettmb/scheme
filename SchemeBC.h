@@ -1,22 +1,73 @@
 #ifndef SCHEME_BC_H
 #define SCHEME_BC_H
 
-#include <stddef.h>
-#include <stdint.h>
-
-typedef uint64_t SchemeBC;
-
 enum {
 
-  SCHEME_BC_HALT = 0,
+  SCHEME_BC_FAULT = 0, /* something really bad happened */
+  SCHEME_BC_HALT = 1, /* cease program execution */
 
-  SCHEME_BC_EVAL,
-  SCHEME_BC_PAP,
-  SCHEME_BC_AP,
-  SCHEME_BC_APPLY,
-  SCHEME_BC_RETFUN,
+  SCHEME_BC_EVAL,   /* exact call */
+  SCHEME_BC_PAP,    /* unsat call */
+  SCHEME_BC_AP,     /* oversat call */
+  SCHEME_BC_APPLY,  /* unknown apply */
+
+  SCHEME_BC_RETURN, /* call current continuation with value */
+
+  SCHEME_BC_LOAD, /* load (statically) bound object */
+  SCHEME_BC_SHIFT /* shift n objects m slots up the stack & dealloc m */
+
+  SCHEME_BC_TOP,  /* copy value at top of stack to value */
+  SCHEME_BC_DROP, /* deallocate value from top of stack */
+  SCHEME_BC_POP,  /* top then drop */
+
+  SCHEME_BC_DUP,  /* overwrite top of stack with value */
+  SCHEME_BC_PUSH, /* copy value to allocated slot at top of stack */
+
+  SCHEME_BC_BYTE_IMM,
+
+  SCHEME_BC_BYTE_NEG,
+  SCHEME_BC_BYTE_ADD,
+  SCHEME_BC_BYTE_SUB,
+  SCHEME_BC_BYTE_MUL,
+  SCHEME_BC_BYTE_DIV,
+  SCHEME_BC_BYTE_REM,
+
+  SCHEME_BC_BYTE_EQ,
+  SCHEME_BC_BYTE_NE,
+
+  SCHEME_BC_BYTE_LT,
+  SCHEME_BC_BYTE_LE,
+  SCHEME_BC_BYTE_GT,
+  SCHEME_BC_BYTE_GE,
+
+  SCHEME_BC_BYTE_NOT,
+  SCHEME_BC_BYTE_AND,
+  SCHEME_BC_BYTE_OR,
+  SCHEME_BC_BYTE_XOR,
+  SCHEME_BC_BYTE_SHL,
+  SCHEME_BC_BYTE_SHR,
+
+  SCHEME_BC_INT_IMM,
+
+  SCHEME_BC_INT_NEG,
+  SCHEME_BC_INT_ADD,
+  SCHEME_BC_INT_SUB,
+  SCHEME_BC_INT_MUL,
+  SCHEME_BC_INT_DIV,
+  SCHEME_BC_INT_REM,
+
+  SCHEME_BC_INT_EQ,
+  SCHEME_BC_INT_NE,
+
+  SCHEME_BC_INT_LT,
+  SCHEME_BC_INT_LE,
+  SCHEME_BC_INT_GT,
+  SCHEME_BC_INT_GE,
 
   SCHEME_BC_NAT_IMM,
+
+  SCHEME_BC_NAT_INC,
+  SCHEME_BC_NAT_DEC,
 
   SCHEME_BC_NAT_NEG,
   SCHEME_BC_NAT_ADD,
@@ -33,10 +84,10 @@ enum {
   SCHEME_BC_NAT_GT,
   SCHEME_BC_NAT_GE,
 
+  SCHEME_BC_NAT_NOT,
   SCHEME_BC_NAT_AND,
   SCHEME_BC_NAT_OR,
   SCHEME_BC_NAT_XOR,
-  SCHEME_BC_NAT_NOT,
   SCHEME_BC_NAT_SHL,
   SCHEME_BC_NAT_SHR,
 
@@ -45,40 +96,25 @@ enum {
   SCHEME_BC_NAT_TODBL,
   SCHEME_BC_NAT_TOCHAR,
 
+  /* SchemeDouble primOps */
+
+  SCHEME_BC_DOUBLE_IMM,
+
+  SCHEME_BC_DOUBLE_NEG,
+  SCHEME_BC_DOUBLE_ADD,
+  SCHEME_BC_DOUBLE_SUB,
+  SCHEME_BC_DOUBLE_MUL,
+  SCHEME_BC_DOUBLE_DIV,
+  SCHEME_BC_DOUBLE_REM,
+
+  SCHEME_BC_DOUBLE_EQ,
+  SCHEME_BC_DOUBLE_NE,
+
+  SCHEME_BC_DOUBLE_LT,
+  SCHEME_BC_DOUBLE_LE,
+  SCHEME_BC_DOUBLE_GT,
+  SCHEME_BC_DOUBLE_GE,
+
 };
-
-
-int
-SchemeUnwind(Scheme *context, SchemeType type, SchemeWord word)
-{
-
-void
-SchemeInterpret(Scheme *context)
-{
-  switch (context->value.hdr.type) {
-    case SCHEME_TYPE_EXN: {
-      SchemeSize nframes = 0;
-      while (context->sp != context->spLim) {
-        SchemeObj *frame = context->sp;
-        if (frame->hdr.type == SCHEME_TYPE_CATCH) {
-          SchemeObj *handler = frame->word.handler.fn;
-          switch (handler->type) {
-            case SCHEME_TYPE_FN: {
-
-          if (frame->
-
-
-
-      for (;;) {
-        if (context->sp == context->spLim)
-          return;
-    case SCHEME_TYPE_PRIM: {
-      
-      for (SchemeSize ix = 0;
-    }
-    case SCHEME_TYPE_FN: {
-      
-
-}
 
 #endif /* !SCHEME_BC_H */

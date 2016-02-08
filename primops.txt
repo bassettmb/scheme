@@ -89,24 +89,7 @@
  *  SchemeDouble
  *
  *  + imm
- *
- *  + exp
- *  + log
- *  + sqrt
- *  + power
- *
- *  + sin
- *  + cos
- *  + tan
- *
- *  + arcsin
- *  + arccos
- *  + arctan
- *
- *  + sinh
- *  + cosh
- *  + tanh
- *
+
  *  + neg
  *  + add
  *  + sub
@@ -121,6 +104,29 @@
  *  + lt
  *  + ge
  *  + gt
+ *
+ *  + exp
+ *  + log2
+ *  + ln
+ *  + log10
+ *  + sqrt
+ *  + pow
+ *
+ *  + sin
+ *  + cos
+ *  + tan
+ *
+ *  + asin
+ *  + acos
+ *  + atan
+ *
+ *  + sinh
+ *  + cosh
+ *  + tanh
+ *
+ *  + asinh
+ *  + acosh
+ *  + atanh
  *
  *  + doubleToByte
  *  + doubleToNat
